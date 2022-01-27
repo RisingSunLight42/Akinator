@@ -89,7 +89,7 @@ def ajoute(question, animal1, animal2, arbre):
         animal2 (str): Second animal, il ne doit pas être dans l'arbre.
         arbre (list): Arbre auquel on veut ajouter la question.
     """
-    if animalPresent(animal1, arbre):  # Si animal1 est présent dans l'arbre, on renvoie l'arbre initial
+    if not animalPresent(animal1, arbre):  # Si animal1 n'est pas présent dans l'arbre, on renvoie l'arbre initial
         return arbre
     elif not animalPresent(animal2, arbre):  # Si animal2 n'est pas présent dans l'arbre, on va ajouter la question
         pass
