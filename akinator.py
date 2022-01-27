@@ -91,18 +91,12 @@ def ajoute(question, animal1, animal2, arbre):
     """
     if not animalPresent(animal1, arbre):  # Si animal1 n'est pas présent dans l'arbre, on renvoie l'arbre initial
         return arbre
-    if estFeuille(arbre):
-        if arbre == animal1:
-            return [question, animal1, animal2]
-        return arbre
-    else:
-        arbre_gauche = ajoute(question, animal1, animal2, filsGauche(arbre))
-        arbre_droit = ajoute(question, animal1, animal2, filsDroit(arbre))
-        return [racine(arbre), arbre_gauche, arbre_droit]
+    if estFeuille(arbre):                        # Si l'arbre est une feuille
+        if arbre == animal1:                     # Si cette feuille est l'animal que l'on souhaite remplacer par une question
+            return [question, animal1, animal2]  # Renvoi le nouvel arbre, avec la question, l'animal1 en oui et l'animal 2 en non
+        return arbre                             # Sinon renvoi juste la feuille
+    else:  # Si c'est pas une feuille
+        arbre_gauche = ajoute(question, animal1, animal2, filsGauche(arbre))  # Récupère l'ajout de l'arbre_gauche
+        arbre_droit = ajoute(question, animal1, animal2, filsDroit(arbre))    # Récupère l'ajout de l'arbre_droit
+        return [racine(arbre), arbre_gauche, arbre_droit]                     # Renvoie une liste contenant la racine puis l'arbre gauche et l'arbre droit
 
-
-print(monArbre)
-monArbre = ajoute("poisson ?", "saumon", "dinosaures", monArbre)
-print(monArbre)
-monArbre = ajoute("a-t-il des piquants sur le dos ?", "Herisson", "Chevreuil", monArbre)
-print(monArbre)
