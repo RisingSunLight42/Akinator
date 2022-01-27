@@ -51,7 +51,6 @@ def animalPresent(animal, arbre):
 
 def questionPresente(question, arbre):
     """Renvoie si une question est présente dans l'arbre ou pas"""
-    print(arbre)
     if estFeuille(arbre):
         return False
     if racine(arbre) == question:
