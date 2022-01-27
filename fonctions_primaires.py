@@ -54,8 +54,15 @@ def filsGauche(arbre):
 
 
 def filsDroit(arbre):
-    """Renvoie le fils droit de l'arbre"""
-    return arbre[2]
+    """Renvoie le fils droit de l'arbre
+
+    Args:
+        arbre (list): Arbre dont l'on souhaite le fils droit
+
+    Returns:
+        [str]: Fils droit de l'arbre
+    """
+    return arbre[2]  # Renvoie le fils droit de l'arbre, qui est toujours en troisième position
 
 
 def nbNoeud(arbre):
