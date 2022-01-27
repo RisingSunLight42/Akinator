@@ -99,4 +99,3 @@ def ajoute(question, animal1, animal2, arbre):
         arbre_gauche = ajoute(question, animal1, animal2, filsGauche(arbre))  # Récupère l'ajout de l'arbre_gauche
         arbre_droit = ajoute(question, animal1, animal2, filsDroit(arbre))    # Récupère l'ajout de l'arbre_droit
         return [racine(arbre), arbre_gauche, arbre_droit]                     # Renvoie une liste contenant la racine puis l'arbre gauche et l'arbre droit
-
