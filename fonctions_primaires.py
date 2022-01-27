@@ -4,8 +4,17 @@ monArbre = ["vit-il dans la maison ?", # Racine de départ
 
 
 def creerArbre(racine, gauche, droit):
-    """Permet de créer un arbre, avec une racine et deux fils"""
-    return [racine, gauche, droit]
+    """Permet de créer un arbre, avec une racine et deux fils
+
+    Args:
+        racine (str): Racine de l'arbre, ici une question pour l'Akinator
+        gauche (str/list): Fils gauche de l'arbre, peut-être une str, mais aussi un autre arbre (donc une liste)
+        droit (str/list): Fils droit de l'arbre, peut-être une str, mais aussi un autre arbre (donc une liste)
+
+    Returns:
+        [list]: Arbre renvoyé, avec sa racine et ses deux fils
+    """
+    return [racine, gauche, droit]  # Renvoi une liste contenant la racine, puis le fils gauche et enfin le fils droit
 
 
 def estFeuille(arbre):
