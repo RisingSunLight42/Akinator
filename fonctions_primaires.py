@@ -109,12 +109,20 @@ def animalPresent(animal, arbre):
 
 
 def questionPresente(question, arbre):
-    """Renvoie si une question est présente dans l'arbre ou pas"""
-    if estFeuille(arbre):
+    """Renvoie si une question est présente dans l'arbre ou pas
+
+    Args:
+        question (str): Question dont l'on souhaite vérifier la présence
+        arbre (str/list): Arbre dans lequel on souhaite savoir si la question est présente
+
+    Returns:
+        boolean: Résultat True/False de la présence de la question donnée dans l'arbre fournit
+    """
+    if estFeuille(arbre):  # Si c'est une feuille, renvoie False car une feuille n'est pas une question
         return False
-    if racine(arbre) == question:
+    if racine(arbre) == question:  # Si la racine de l'arbre correspond à la question, alors elle est présente (renvoie True)
         return True
-    return questionPresente(question, filsGauche(arbre)) or questionPresente(question, filsDroit(arbre))
+    return questionPresente(question, filsGauche(arbre)) or questionPresente(question, filsDroit(arbre))  # Sinon, appelle la fonction sur fils gauche et droit de l'arbre
     
     
 def listeAnimal(arbre):
