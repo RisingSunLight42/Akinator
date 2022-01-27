@@ -80,10 +80,17 @@ def nbNoeud(arbre):
     
     
 def nbFeuille(arbre):
-    """Renvoie le nombre de feuilles"""
-    if estFeuille(arbre):
+    """Renvoie le nombre de feuilles
+
+    Args:
+        arbre (str/list): Arbre dont l'on souhaite connaître le nombre de feuilles
+
+    Returns:
+        [int]: Nombre de feuilles de l'arbre donné
+    """
+    if estFeuille(arbre):  # Si l'arbre est une feuille, renvoie 1, car il y a une feuille de plus dans l'arbre
         return 1
-    return nbFeuille(filsGauche(arbre)) + nbFeuille(filsDroit(arbre))
+    return nbFeuille(filsGauche(arbre)) + nbFeuille(filsDroit(arbre))  # Sinon, regarde si les arbres gauche et droit de l'arbre précédemment donné sont des feuilles
 
 
 def animalPresent(animal, arbre):
