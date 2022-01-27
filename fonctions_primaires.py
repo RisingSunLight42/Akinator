@@ -12,7 +12,7 @@ def creerArbre(racine, gauche, droit):
         droit (str/list): Fils droit de l'arbre, peut-être une str, mais aussi un autre arbre (donc une liste)
 
     Returns:
-        [list]: Arbre renvoyé, avec sa racine et ses deux fils
+        list: Arbre renvoyé, avec sa racine et ses deux fils
     """
     return [racine, gauche, droit]  # Renvoi une liste contenant la racine, puis le fils gauche et enfin le fils droit
 
@@ -24,7 +24,7 @@ def estFeuille(arbre):
         arbre (str/list): Arbre à tester
 
     Returns:
-        [boolean]: Valeur booléenne si l'arbre est une feuille ou non
+        boolean: Valeur booléenne si l'arbre est une feuille ou non
     """
     return type(arbre) == str  # Teste si le type de l'arbre est str et renvoi le résultat du test
 
@@ -36,7 +36,7 @@ def racine(arbre):
         arbre (list): Arbre dont l'on souhaite la racine
 
     Returns:
-        [str]: Racine de l'arbre
+        str: Racine de l'arbre
     """
     return arbre[0]  # Renvoie la racine de l'arbre, qui est toujours en première position
 
@@ -48,7 +48,7 @@ def filsGauche(arbre):
         arbre (list): Arbre dont l'on souhaite le fils gauche
 
     Returns:
-        [str]: Fils gauche de l'arbre
+        str: Fils gauche de l'arbre
     """
     return arbre[1]  # Renvoie le fils gauche de l'arbre, qui est toujours en seconde position
 
@@ -60,7 +60,7 @@ def filsDroit(arbre):
         arbre (list): Arbre dont l'on souhaite le fils droit
 
     Returns:
-        [str]: Fils droit de l'arbre
+        str: Fils droit de l'arbre
     """
     return arbre[2]  # Renvoie le fils droit de l'arbre, qui est toujours en troisième position
 
@@ -72,7 +72,7 @@ def nbNoeud(arbre):
         arbre (str/list): Arbre dont l'on souhaite connaître le nombre de noeuds
 
     Returns:
-        [int]: Nombre de noeuds de l'arbre donné 
+        int: Nombre de noeuds de l'arbre donné 
     """
     if estFeuille(arbre):  # Si l'arbre est une feuille, alors renvoie 1 (car la feuille est un noeud)
         return 1
@@ -86,7 +86,7 @@ def nbFeuille(arbre):
         arbre (str/list): Arbre dont l'on souhaite connaître le nombre de feuilles
 
     Returns:
-        [int]: Nombre de feuilles de l'arbre donné
+        int: Nombre de feuilles de l'arbre donné
     """
     if estFeuille(arbre):  # Si l'arbre est une feuille, renvoie 1, car il y a une feuille de plus dans l'arbre
         return 1
@@ -94,10 +94,18 @@ def nbFeuille(arbre):
 
 
 def animalPresent(animal, arbre):
-    """Renvoie si un animal est présent ou pas"""
-    if estFeuille(arbre):
-        return arbre == animal
-    return animalPresent(animal, filsGauche(arbre)) or animalPresent(animal, filsDroit(arbre))
+    """Renvoie si un animal est présent ou pas dans l'arbre
+
+    Args:
+        animal (str): Animal dont l'on souhaite connaître la présence
+        arbre (str/list): Arbre dans lequel on souhaite savoir si l'animal est présent
+
+    Returns:
+        boolean: Résultat True/False de la présence de l'animal donné dans l'arbre fournit
+    """
+    if estFeuille(arbre):       # Si l'arbre est une feuille, alors c'est un animal
+        return arbre == animal  # On vérifie si cet animal est celui demandé et on renvoie le résultat
+    return animalPresent(animal, filsGauche(arbre)) or animalPresent(animal, filsDroit(arbre))  # Sinon, appelle la fonction sur les arbres gauche et droit avec un OU logique
 
 
 def questionPresente(question, arbre):
