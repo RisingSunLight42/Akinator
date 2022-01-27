@@ -91,5 +91,18 @@ def ajoute(question, animal1, animal2, arbre):
     """
     if not animalPresent(animal1, arbre):  # Si animal1 n'est pas présent dans l'arbre, on renvoie l'arbre initial
         return arbre
-    elif not animalPresent(animal2, arbre):  # Si animal2 n'est pas présent dans l'arbre, on va ajouter la question
-        pass
+    if estFeuille(arbre):
+        if arbre == animal1:
+            return [question, animal1, animal2]
+        return arbre
+    else:
+        arbre_gauche = ajoute(question, animal1, animal2, filsGauche(arbre))
+        arbre_droit = ajoute(question, animal1, animal2, filsDroit(arbre))
+        return [racine(arbre), arbre_gauche, arbre_droit]
+
+
+print(monArbre)
+monArbre = ajoute("poisson ?", "saumon", "dinosaures", monArbre)
+print(monArbre)
+monArbre = ajoute("a-t-il des piquants sur le dos ?", "Herisson", "Chevreuil", monArbre)
+print(monArbre)
