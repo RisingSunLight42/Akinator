@@ -77,3 +77,16 @@ def lesquels(question, arbre):
         return []
     else:
         return lesquels(question, filsGauche(arbre)) + lesquels(question, filsDroit(arbre)) # Si pas de résultats appelle la fonction sur le fils gauche et droit de l'arbre
+
+
+def ajoute(question, animal1, animal2, arbre):
+    """Ajoute une question donnée dans l'arbre, dont la réponse est oui pour animal1 et non pour animal2.
+    Si animal1 n'est pas dans arbre, on renvoie l'arbre d'origine.
+
+    Args:
+        question (str): Question à ajouter.
+        animal1 (str): Premier animal, il doit être obligatoirement présent dans l'arbre.
+        animal2 (str): Second animal, il ne doit pas être dans l'arbre.
+        arbre (list): Arbre auquel on veut ajouter la question.
+    """
+    pass
