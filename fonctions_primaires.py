@@ -66,10 +66,17 @@ def filsDroit(arbre):
 
 
 def nbNoeud(arbre):
-    """Renvoie le nombre de noeuds"""
-    if estFeuille(arbre):
+    """Renvoie le nombre de noeuds
+
+    Args:
+        arbre (str/list): Arbre dont l'on souhaite connaître le nombre de noeuds
+
+    Returns:
+        [int]: Nombre de noeuds de l'arbre donné 
+    """
+    if estFeuille(arbre):  # Si l'arbre est une feuille, alors renvoie 1 (car la feuille est un noeud)
         return 1
-    return 1 + nbNoeud(filsGauche(arbre)) + nbNoeud(filsDroit(arbre))
+    return 1 + nbNoeud(filsGauche(arbre)) + nbNoeud(filsDroit(arbre))  # Sinon, renvoie 1 (la racine) + le nombre des noeuds des fils gauche et droit, eux-mêmes des arbres
     
     
 def nbFeuille(arbre):
