@@ -51,7 +51,6 @@ def animalPresent(animal, arbre):
 
 def questionPresente(question, arbre):
     """Renvoie si une question est présente dans l'arbre ou pas"""
-    print(arbre)
     if estFeuille(arbre):
         return False
     if racine(arbre) == question:
@@ -72,7 +71,31 @@ def listeAnimal(arbre):
 
 def lesquels(question, arbre):
     """Renvoie une liste des animaux vérifiant la caractéristique"""
-    if racine(arbre) == question:
-        return listeAnimal(arbre)
+    if racine(arbre) == question:  # Vérifie si la racine de l'arbre est la question recherché
+        return listeAnimal(filsGauche(arbre))  # Si oui, utilise la fonction listeAnimal pour lister les animaux liés à la question, uniquement le filsGauche car on veut le oui
+    if estFeuille(arbre):  # Si jamais l'arbre est une feuille, renvoie une liste vide car il n'a pas répondu au précédent test d'arrêt
+        return []
     else:
-        pass
+        return lesquels(question, filsGauche(arbre)) + lesquels(question, filsDroit(arbre)) # Si pas de résultats appelle la fonction sur le fils gauche et droit de l'arbre
+
+
+def ajoute(question, animal1, animal2, arbre):
+    """Ajoute une question donnée dans l'arbre, dont la réponse est oui pour animal1 et non pour animal2.
+    Si animal1 n'est pas dans arbre, on renvoie l'arbre d'origine.
+
+    Args:
+        question (str): Question à ajouter.
+        animal1 (str): Premier animal, il doit être obligatoirement présent dans l'arbre.
+        animal2 (str): Second animal, il ne doit pas être dans l'arbre.
+        arbre (list): Arbre auquel on veut ajouter la question.
+    """
+    if not animalPresent(animal1, arbre):  # Si animal1 n'est pas présent dans l'arbre, on renvoie l'arbre initial
+        return arbre
+    if estFeuille(arbre):                        # Si l'arbre est une feuille
+        if arbre == animal1:                     # Si cette feuille est l'animal que l'on souhaite remplacer par une question
+            return [question, animal1, animal2]  # Renvoi le nouvel arbre, avec la question, l'animal1 en oui et l'animal 2 en non
+        return arbre                             # Sinon renvoi juste la feuille
+    else:  # Si c'est pas une feuille
+        arbre_gauche = ajoute(question, animal1, animal2, filsGauche(arbre))  # Récupère l'ajout de l'arbre_gauche
+        arbre_droit = ajoute(question, animal1, animal2, filsDroit(arbre))    # Récupère l'ajout de l'arbre_droit
+        return [racine(arbre), arbre_gauche, arbre_droit]                     # Renvoie une liste contenant la racine puis l'arbre gauche et l'arbre droit
