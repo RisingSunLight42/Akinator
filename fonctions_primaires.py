@@ -30,8 +30,15 @@ def estFeuille(arbre):
 
 
 def racine(arbre):
-    """Renvoie la racine de l'arbre"""
-    return arbre[0]
+    """Renvoie la racine de l'arbre
+
+    Args:
+        arbre (list): Arbre dont l'on souhaite la racine
+
+    Returns:
+        [str]: Racine de l'arbre
+    """
+    return arbre[0]  # Renvoie la racine de l'arbre, qui est toujours en première position
 
 
 def filsGauche(arbre):
