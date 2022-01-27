@@ -71,7 +71,9 @@ def listeAnimal(arbre):
 
 def lesquels(question, arbre):
     """Renvoie une liste des animaux vérifiant la caractéristique"""
-    if racine(arbre) == question:
-        return listeAnimal(arbre)
+    if racine(arbre) == question:  # Vérifie si la racine de l'arbre est la question recherché
+        return listeAnimal(arbre)  # Si oui, utilise la fonction listeAnimal pour lister les animaux liés à la question
+    if estFeuille(arbre):
+        return []
     else:
         pass
