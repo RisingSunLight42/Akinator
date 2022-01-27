@@ -42,8 +42,15 @@ def racine(arbre):
 
 
 def filsGauche(arbre):
-    """Renvoie le fils gauche de l'arbre"""
-    return arbre[1]
+    """Renvoie le fils gauche de l'arbre
+
+    Args:
+        arbre (list): Arbre dont l'on souhaite le fils gauche
+
+    Returns:
+        [str]: Fils gauche de l'arbre
+    """
+    return arbre[1]  # Renvoie le fils gauche de l'arbre, qui est toujours en seconde position
 
 
 def filsDroit(arbre):
