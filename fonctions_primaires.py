@@ -18,8 +18,15 @@ def creerArbre(racine, gauche, droit):
 
 
 def estFeuille(arbre):
-    """Renvoie si l'arbre donné est une feuille"""
-    return type(arbre) == str
+    """Renvoie si l'arbre donné est une feuille
+
+    Args:
+        arbre (str/list): Arbre à tester
+
+    Returns:
+        [boolean]: Valeur booléenne si l'arbre est une feuille ou non
+    """
+    return type(arbre) == str  # Teste si le type de l'arbre est str et renvoi le résultat du test
 
 
 def racine(arbre):
