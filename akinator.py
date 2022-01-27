@@ -73,7 +73,7 @@ def lesquels(question, arbre):
     """Renvoie une liste des animaux vérifiant la caractéristique"""
     if racine(arbre) == question:  # Vérifie si la racine de l'arbre est la question recherché
         return listeAnimal(filsGauche(arbre))  # Si oui, utilise la fonction listeAnimal pour lister les animaux liés à la question, uniquement le filsGauche car on veut le oui
-    if estFeuille(arbre):
+    if estFeuille(arbre):  # Si jamais l'arbre est une feuille, renvoie une liste vide car il n'a pas répondu au précédent test d'arrêt
         return []
     else:
         return lesquels(question, filsGauche(arbre)) + lesquels(question, filsDroit(arbre)) # Si pas de résultats appelle la fonction sur le fils gauche et droit de l'arbre
