@@ -76,4 +76,4 @@ def lesquels(question, arbre):
     if estFeuille(arbre):
         return []
     else:
-        pass
+        return lesquels(question, filsGauche(arbre)) + lesquels(question, filsDroit(arbre)) # Si pas de résultats appelle la fonction sur le fils gauche et droit de l'arbre
