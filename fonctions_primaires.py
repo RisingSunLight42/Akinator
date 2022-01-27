@@ -126,8 +126,15 @@ def questionPresente(question, arbre):
     
     
 def listeAnimal(arbre):
-    """Renvoie une liste des animaux de l'arbre"""
-    if estFeuille(arbre):
+    """Renvoie une liste des animaux de l'arbre
+
+    Args:
+        arbre (str/list): Arbre dont l'on souhaite connaître la liste des animaux
+
+    Returns:
+        list: Liste des animaux présents dans l'arbre
+    """
+    if estFeuille(arbre):  # Si c'est une feuille, renvoie l'arbre sous forme de liste car c'est un animal
         return [arbre]
     arbre_gauche = listeAnimal(filsGauche(arbre))  # Récupère la valeur de listeAnimal de l'arbre gauche
     arbre_droit = listeAnimal(filsDroit(arbre))    # Récupère la valeur de listeAnimal de l'arbre droit
