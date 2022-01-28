@@ -53,7 +53,7 @@ def jeu2(arbre):
         else:  # Si l'entrée utilisateur est invalide, fait recommencer
             resultat = "0"
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
-    rejoue = input("Veux-tu rejouer ? ")
+    rejoue = input("Veux-tu rejouer ? ")  # Demande si le joueur veut rejouer, si oui, relance une partie, sinon dit aurevoir
     if rejoue.lower().strip() == "oui":
         jeu2(sauvegarde_arbre)
     else:
