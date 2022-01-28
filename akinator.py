@@ -43,18 +43,21 @@ def jeu2(arbre):
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
     resultat = "0"          # Crée une variable résultat avec une valeur arbitraire
     while resultat == "0":  # Tant que résultat a cette valeur arbitraire, on demande si le résultat est bon
-        resultat = input(f"C'est un {arbre} ! J'ai raison ?")  # Donne la réponse qu'il a trouvé et demande s'il a bon
+        resultat = input(f"C'est un {arbre} ! J'ai raison ? ")  # Donne la réponse qu'il a trouvé et demande s'il a bon
         if resultat.lower().strip() == "oui":
-            print("Super ! J'ai encore gagné.")
+            print("Super ! J'ai encore gagné !")
         elif resultat.lower().strip() == "non":
-            animal_attendu = input("C'était quoi alors ?")
+            animal_attendu = input("C'était quoi alors ? ")
             question_proposee = input(f"Donne une question : oui pour {arbre}, non pour {animal_attendu} : ")
-            func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)  # Ajoute la question avec les animaux et l'arbre sauvegardé
+            nouvel_arbre = func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)  # Ajoute la question à l'arbre et stocke le nouvel arbre
             rejoue = input("Veux-tu rejouer ? ")
             if rejoue.lower().strip() == "oui":
-                jeu2(sauvegarde_arbre)
+                jeu2(nouvel_arbre)
             else:
                 print("Merci d'avoir joué ! À bientôt !")
         else:
             resultat = "0"
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
+
+
+jeu2(monArbre)
