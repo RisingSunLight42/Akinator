@@ -1,6 +1,3 @@
-from fonctions_primaires import estFeuille, racine
-
-
 import fonctions_primaires as func_prim
 
 monArbre = ["vit-il dans la maison ?", # Racine de départ
