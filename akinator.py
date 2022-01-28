@@ -46,11 +46,11 @@ def jeu2(arbre):
         resultat = input(f"C'est un {arbre} ! J'ai raison ? ")  # Donne la réponse qu'il a trouvé et demande s'il a bon
         if resultat.lower().strip() == "oui":                   # Si Akinator a raison, dit qu'il a gagné
             print("Super ! J'ai encore gagné !")
-        elif resultat.lower().strip() == "non":
-            animal_attendu = input("C'était quoi alors ? ")
-            question_proposee = input(f"Donne une question : oui pour {arbre}, non pour {animal_attendu} : ")
-            sauvegarde_arbre = func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)  # Ajoute la question à l'arbre et stocke le nouvel arbre
-        else:
+        elif resultat.lower().strip() == "non":                 # S'il a tord
+            animal_attendu = input("C'était quoi alors ? ")     # Demande l'animal attendu
+            question_proposee = input(f"Donne une question : oui pour {arbre}, non pour {animal_attendu} : ")  # Puis demande la question à poser
+            sauvegarde_arbre = func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)    # Ajoute la question à l'arbre et stocke le nouvel arbre
+        else:  # Si l'entrée utilisateur est invalide, fait recommencer
             resultat = "0"
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
         rejoue = input("Veux-tu rejouer ? ")
