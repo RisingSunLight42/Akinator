@@ -20,12 +20,11 @@ def jeu1(arbre):
     print(f"C'est un {arbre} !")                        # Donne la réponse qu'il a trouvé
 
 
-def jeu2(arbre):
+def jeu2():
     """Fonction simulant le déroulé d'un Akinator, mais avec en plus un système d'apprentissage
-
-    Args:
-        arbre (list): Arbre binaire contenant les questions qu'Akinator posera, ainsi que les réponses finales.
     """
+    with open("arbre_akinator.pik", "rb") as fichierArbre:  # Récupère l'arbre des questions et réponses pour pouvoir jouer
+        arbre = pickle.load(fichierArbre)
     sauvegarde_arbre = arbre                            # Sauvegarde l'arbre donné pour pouvoir le modifier en cas de mauvaise réponse
     print("Pense à un animal.")                         # Demande au joueur de penser à l'animal qu'il souhaite faire deviner
     while not func_prim.estFeuille(arbre):              # Tant que l'arbre n'est pas une feuille (donc un animal)
@@ -45,11 +44,13 @@ def jeu2(arbre):
             animal_attendu = input("C'était quoi alors ? ")     # Demande l'animal attendu
             question_proposee = input(f"Donne une question : oui pour {arbre}, non pour {animal_attendu} : ")  # Puis demande la question à poser
             sauvegarde_arbre = func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)    # Ajoute la question à l'arbre et stocke le nouvel arbre
+            with open("arbre_akinator.pik", "wb") as fichierArbre:  # Modifie le fichier pour le mettre à jour avec l'arbre modifié
+                pickle.dump(sauvegarde_arbre, fichierArbre)
         else:  # Si l'entrée utilisateur est invalide, fait recommencer
             resultat = "0"
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
     rejoue = input("Veux-tu rejouer ? ")  # Demande si le joueur veut rejouer, si oui, relance une partie, sinon dit aurevoir
     if rejoue.lower().strip() == "oui":
-        jeu2(sauvegarde_arbre)
+        jeu2()
     else:
         print("Merci d'avoir joué ! À bientôt !")
