@@ -40,4 +40,13 @@ def jeu2(arbre):
             arbre = func_prim.filsDroit(arbre)
         else:                                           # Si la réponse est incorrecte, il donne un message d'erreur et repose la question
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
-    print(f"C'est un {arbre} !")                        # Donne la réponse qu'il a trouvé
+    resultat = "0"          # Crée une variable résultat avec une valeur arbitraire
+    while resultat == "0":  # Tant que résultat a cette valeur arbitraire, on demande si le résultat est bon
+        resultat = input(f"C'est un {arbre} ! J'ai raison ?")  # Donne la réponse qu'il a trouvé et demande s'il a bon
+        if resultat.lower().strip() == "oui":
+            print("Super ! J'ai encore gagné.")
+        elif resultat.lower().strip() == "non":
+            pass
+        else:
+            resultat = "0"
+            print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
