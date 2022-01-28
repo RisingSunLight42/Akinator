@@ -31,6 +31,7 @@ def jeu2(arbre):
     Args:
         arbre (list): Arbre binaire contenant les questions qu'Akinator posera, ainsi que les réponses finales.
     """
+    sauvegarde_arbre = arbre                            # Sauvegarde l'arbre donné pour pouvoir le modifier en cas de mauvaise réponse
     print("Pense à un animal.")                         # Demande au joueur de penser à l'animal qu'il souhaite faire deviner
     while not func_prim.estFeuille(arbre):              # Tant que l'arbre n'est pas une feuille (donc un animal)
         reponse = input(f"{func_prim.racine(arbre)} ")  # Il pose au joueur la question
@@ -46,7 +47,14 @@ def jeu2(arbre):
         if resultat.lower().strip() == "oui":
             print("Super ! J'ai encore gagné.")
         elif resultat.lower().strip() == "non":
-            pass
+            animal_attendu = input("C'était quoi alors ?")
+            question_proposee = input(f"Donne une question : oui pour {arbre}, non pour {animal_attendu} : ")
+            func_prim.ajoute(question_proposee, arbre, animal_attendu, sauvegarde_arbre)  # Ajoute la question avec les animaux et l'arbre sauvegardé
+            rejoue = input("Veux-tu rejouer ? ")
+            if rejoue.lower().strip() == "oui":
+                jeu2(sauvegarde_arbre)
+            else:
+                print("Merci d'avoir joué ! À bientôt !")
         else:
             resultat = "0"
             print("La réponse entrée est invalide, répond bien par 'oui' ou 'non' !")
