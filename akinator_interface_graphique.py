@@ -12,6 +12,16 @@ class Akinator():
         self.variable_texte = StringVar()
         self.creation_fenetre()
     
+    
+    def changement_question(self, valeur):
+        if valeur == "Oui":
+            self.arbre = filsGauche(self.arbre)
+        else:
+            self.arbre = filsDroit(self.arbre)
+        if not estFeuille(self.arbre):
+            self.variable_texte.set(racine(self.arbre))
+            self.fenetre.update()
+    
     def creation_fenetre(self):
         self.fenetre.title("Akinator")  # Ajoute un titre à la fenêtre
         self.fenetre.geometry("")  # Définit la taile de la fenêtre
@@ -27,8 +37,8 @@ class Akinator():
         def jeu():
             """Lance le jeu en créant les boutons de réponse oui/non et modifiant la variable de texte pour la question
             """
-            bouton_oui = Button(self.fenetre, text="oui", command= lambda: self.variable_texte.set("Oui"))
-            bouton_non = Button(self.fenetre, text="non", command= lambda: self.variable_texte.set("Non"))
+            bouton_oui = Button(self.fenetre, text="oui", command= lambda: self.changement_question("Oui"))
+            bouton_non = Button(self.fenetre, text="non", command= lambda: self.changement_question("Non"))
             bouton_oui.grid(row=1, column=0)
             bouton_non.grid(row=1, column=1)
             bouton_jouer.grid_remove()
