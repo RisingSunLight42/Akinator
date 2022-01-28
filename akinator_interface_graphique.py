@@ -1,5 +1,11 @@
-from sqlite3 import Row
+import pickle
+from time import sleep
+from fonctions_primaires import *
 from tkinter import *
+
+# Récupération de l'arbre
+with open("arbre_akinator.pik", "rb") as fichierArbre:
+        arbre = pickle.load(fichierArbre)
 
 # Création de la fenêtre
 fenetre = Tk()  # Crée la fenêtre de jeu
@@ -16,12 +22,17 @@ label_question.grid(row=0, column=0, columnspan=2)
 # Boutons
 
 def jeu():
+    """Lance le jeu en créant les boutons de réponse oui/non et modifiant la variable de texte pour la question
+    """
     bouton_oui = Button(fenetre, text="oui", command= lambda: variable_texte.set("Oui"))
     bouton_non = Button(fenetre, text="non", command= lambda: variable_texte.set("Non"))
     bouton_oui.grid(row=1, column=0)
     bouton_non.grid(row=1, column=1)
     bouton_jouer.grid_remove()
-    variable_texte.set("Le jeu peut commencer !")
+    variable_texte.set("Pense à un animal.")
+    fenetre.update()
+    sleep(3)
+    variable_texte.set(racine(arbre))
 
 bouton_jouer = Button(fenetre, text="Jouer", command= lambda: jeu())
 bouton_jouer.grid(row=1, column=0, columnspan=2)
