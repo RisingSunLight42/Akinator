@@ -1,3 +1,4 @@
+from sqlite3 import Row
 from tkinter import *
 
 
@@ -10,14 +11,14 @@ fenetre.geometry("")  # Définit la taile de la fenêtre
 variable_texte = StringVar()
 label_question = Label(fenetre, textvariable=variable_texte)
 
-variable_texte.set("Heyo")
-label_question.pack()
+variable_texte.set("Bienvenue sur le jeu Akinator ! Clique sur le bouton \"Jouer\" pour commencer la partie !")
+label_question.grid(row=0, column=0, columnspan=2)
 
 # Boutons
 bouton_oui = Button(fenetre, text="oui", command= lambda: variable_texte.set("Oui"))
 bouton_non = Button(fenetre, text="non", command= lambda: variable_texte.set("Non"))
 
-bouton_oui.pack()
-bouton_non.pack()
+bouton_oui.grid(row=1, column=0)
+bouton_non.grid(row=1, column=1)
 
 fenetre.mainloop()  # Lance la fenêtre
