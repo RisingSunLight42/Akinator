@@ -56,6 +56,7 @@ class Akinator():
         else:
             etape = self.etape_resultat  # Suivant le numéro de l'étape, l'ordinateur saura quoi faire
             multiplicateur = 1  # Permet de définir la valeur d'ajout à etape_resultat après l'exécution d'une étape
+            
             if etape == 0:
                 reponse = reponse.strip().lower()
                 if reponse == "oui":
@@ -71,9 +72,11 @@ class Akinator():
                     self.fenetre.update()
                     sleep(2)
                     self.variable_texte.set(f"Je pense que c'est un {self.arbre} ! Ai-je raison ?")
+                    
             elif etape == 1:
                 self.stock_animal_attendu = reponse
                 self.variable_texte.set(f"Donne une question : oui pour {self.arbre}, non pour {reponse}")
+                
             elif etape == 2:
                 self.variable_texte.set("Veux-tu rejouer ?")
                 with open("arbre_akinator.pik", "rb") as fichierArbre: # Lit le fichier de sauvegarde
@@ -82,6 +85,7 @@ class Akinator():
                 with open("arbre_akinator.pik", "wb") as fichierArbre: # Modifie le fichier de sauvegarde
                     pickle.dump(self.arbre, fichierArbre)
                 self.stock_animal_attendu = "" # Remise à 0 de la variable de stockage de l'arbre attendu en cas de rejeu
+                
             elif etape == 3:
                 reponse = reponse.strip().lower()
                 if reponse == "oui":
