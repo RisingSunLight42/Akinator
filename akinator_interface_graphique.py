@@ -85,6 +85,8 @@ class Akinator():
             elif etape == 3:
                 reponse = reponse.strip().lower()
                 if reponse == "oui":
+                    with open("arbre_akinator.pik", "rb") as fichierArbre:
+                        self.arbre = pickle.load(fichierArbre)
                     self.lancement_jeu()
                 else:
                     self.variable_texte.set("Merci d'avoir joué !")
