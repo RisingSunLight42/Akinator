@@ -34,6 +34,7 @@ class Akinator():
     def lancement_jeu(self, bouton_a_retirer = None):
         """Lance le jeu en créant les boutons de réponse oui/non et modifiant la variable de texte pour la question
         """
+        print(self.arbre)
         entree_utilisateur = Entry(self.fenetre, width=30)
         # bouton_oui = Button(self.fenetre, text="oui", command= lambda: self.gestion_jeu("Oui"))
         bouton_envoi = Button(self.fenetre, text="Envoyer la réponse", command= lambda: self.gestion_jeu(entree_utilisateur))
@@ -81,9 +82,9 @@ class Akinator():
                 self.variable_texte.set("Veux-tu rejouer ?")
                 with open("arbre_akinator.pik", "rb") as fichierArbre: # Lit le fichier de sauvegarde
                     arbre_stocke = pickle.load(fichierArbre)
-                self.arbre = ajoute(reponse, self.arbre, self.stock_animal_attendu, arbre_stocke)
+                arbre = ajoute(reponse, self.arbre, self.stock_animal_attendu, arbre_stocke)
                 with open("arbre_akinator.pik", "wb") as fichierArbre: # Modifie le fichier de sauvegarde
-                    pickle.dump(self.arbre, fichierArbre)
+                    pickle.dump(arbre, fichierArbre)
                 self.stock_animal_attendu = "" # Remise à 0 de la variable de stockage de l'arbre attendu en cas de rejeu
                 
             elif etape == 3:
