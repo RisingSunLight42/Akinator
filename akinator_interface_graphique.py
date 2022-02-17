@@ -34,14 +34,17 @@ class Akinator():
     def lancement_jeu(self, bouton_a_retirer = None):
         """Lance le jeu en créant les boutons de réponse oui/non et modifiant la variable de texte pour la question
         """
-        print(self.arbre)
+        #* Définit l'entrée utilisateur et le bouton pour envoyer la réponse
         entree_utilisateur = Entry(self.fenetre, width=30)
-        # bouton_oui = Button(self.fenetre, text="oui", command= lambda: self.gestion_jeu("Oui"))
         bouton_envoi = Button(self.fenetre, text="Envoyer la réponse", command= lambda: self.gestion_jeu(entree_utilisateur))
+        
+        #* Les places dans la fenêtre
         entree_utilisateur.grid(row=1, column=0)
         bouton_envoi.grid(row=1, column=1)
-        if bouton_a_retirer is not None: # On peut ne pas avoir à retirer le bouton (si jamais on relance une partie directement)
+        if bouton_a_retirer is not None: # Retire le bouton jouer s'il est existant
             bouton_a_retirer.grid_remove()
+            
+        #* Initialise le début du jeu
         self.variable_texte.set("Pense à un animal.")
         self.fenetre.update()
         sleep(1)
