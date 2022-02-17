@@ -53,25 +53,32 @@ class Akinator():
     
     def gestion_jeu(self, entree):
         """Fonction gérant le déroulé du jeu en fonction des réponses du joueur"""
+        #* Récupère la réponse du joueur et supprime l'entrée utilisateur
         reponse = entree.get()
         entree.delete(0, END)
+        
+        #* Si jamais l'arbre n'est pas une feuille, pose la question
         if not estFeuille(self.arbre):
             self.changement_question(reponse)
+            
+        #* Si c'est une feuille
         else:
+            #* Récupère le numéro d'étape
             etape = self.etape_resultat  # Suivant le numéro de l'étape, l'ordinateur saura quoi faire
             multiplicateur = 1  # Permet de définir la valeur d'ajout à etape_resultat après l'exécution d'une étape
             
+            #* Étape 0, correspond à quand l'utilisateur doit dire "oui" ou "non" pour l'animal proposé
             if etape == 0:
                 reponse = reponse.strip().lower()
-                if reponse == "oui":
+                if reponse == "oui": # Si oui, dit qu'il a gagné, et modifie le multiplicateur pour aller à l'étape rejouer après
                     self.variable_texte.set("Super ! J'ai encore gagné !")
                     multiplicateur = 3
                     self.fenetre.update()
                     sleep(2)
                     self.variable_texte.set("Veux-tu rejouer ?")
-                elif reponse == "non":
+                elif reponse == "non": #Si non, demande ce que c'était
                     self.variable_texte.set("C'était quoi alors ? :c")
-                else:
+                else: # Sinon, demande de répondre par oui ou non
                     self.variable_texte.set("Répond par oui ou par non s'il te plaît !")
                     self.fenetre.update()
                     sleep(2)
